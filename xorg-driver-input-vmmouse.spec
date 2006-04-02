@@ -1,4 +1,5 @@
 Summary:	VMMouse protocol for VMware virtual machines
+Summary(pl):	Sterownik protoko³u VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
 Version:	12.3.2.0
 Release:	1
@@ -21,6 +22,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The VMMouse driver enables support for the special VMMouse protocol
 that is provided by VMware virtual machines to give absolute pointer
 positioning.
+
+%description -l pl
+Sterownik VMMouse dodaje obs³ugê specjalnego protoko³u VMMouse
+udostêpnianego przez maszyny wirtualne VMware do przekazywania
+bezwzglêdnego po³o¿enia wska¼nika.
 
 %prep
 %setup -q -n xf86-input-vmmouse-%{version}
