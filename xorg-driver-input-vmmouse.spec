@@ -1,12 +1,12 @@
 Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
-Version:	12.6.5
-Release:	4
+Version:	12.6.10
+Release:	1
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
-# Source0-md5:	ce78e0135b5e34338a1ea98afb933120
+# Source0-md5:	49c6e77851e9f7bc5cb7d85f061992f8
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -15,10 +15,10 @@ BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	rpmbuild(macros) >= 1.389
 BuildRequires:	xorg-proto-inputproto-devel
 BuildRequires:	xorg-proto-randrproto-devel
-BuildRequires:	xorg-util-util-macros >= 0.99.2
-BuildRequires:	xorg-xserver-server-devel >= 1.0.99.901
-%requires_xorg_xserver_xinput
-Requires:	xorg-xserver-server >= 1.0.99.901
+BuildRequires:	xorg-util-util-macros >= 1.4
+BuildRequires:	xorg-xserver-server-devel >= 1.6.0
+%{?requires_xorg_xserver_xinput}
+Requires:	xorg-xserver-server >= 1.6.0
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,8 +41,7 @@ bezwzględnego położenia wskaźnika.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-	--disable-static
+%configure
 
 %{__make}
 
@@ -62,7 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING ChangeLog README
 %attr(755,root,root) %{_bindir}/vmmouse_detect
 %attr(755,root,root) %{_libdir}/xorg/modules/input/vmmouse_drv.so
+%{_datadir}/X11/xorg.conf.d/50-vmmouse.conf
 %attr(755,root,root) %{_libdir}/hal/hal-probe-vmmouse
 %{_datadir}/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
+/lib/udev/rules.d/69-xorg-vmmouse.rules
 %{_mandir}/man1/vmmouse_detect.1*
 %{_mandir}/man4/vmmouse.4*
