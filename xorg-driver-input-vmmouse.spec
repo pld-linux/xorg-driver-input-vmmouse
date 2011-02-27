@@ -2,7 +2,7 @@ Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
 Version:	12.6.10
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
