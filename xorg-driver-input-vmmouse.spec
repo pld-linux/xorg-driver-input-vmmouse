@@ -1,12 +1,12 @@
 Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
-Version:	12.6.99.901
+Version:	12.7.0
 Release:	1
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
-# Source0-md5:	b55130ed2e859f489ee6174a6324d4ab
+# Source0-md5:	dc77181330f983c7d0ec1ea1592c2ca7
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -15,7 +15,7 @@ BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	rpmbuild(macros) >= 1.389
 BuildRequires:	xorg-proto-inputproto-devel
 BuildRequires:	xorg-proto-randrproto-devel
-BuildRequires:	xorg-util-util-macros >= 1.4
+BuildRequires:	xorg-util-util-macros >= 1.8
 BuildRequires:	xorg-xserver-server-devel >= 1.6.0
 %{?requires_xorg_xserver_xinput}
 Requires:	xorg-xserver-server >= 1.6.0
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
