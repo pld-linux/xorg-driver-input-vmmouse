@@ -1,12 +1,16 @@
+#
+# Conditional build:
+%bcond_with	hal	# HAL support
+#
 Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
-Version:	12.7.0
-Release:	4
+Version:	12.8.0
+Release:	1
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
-# Source0-md5:	dc77181330f983c7d0ec1ea1592c2ca7
+# Source0-md5:	15fce165117706cd5e774a8aa58122ce
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -63,5 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/xorg/modules/input/vmmouse_drv.so
 %{_datadir}/X11/xorg.conf.d/50-vmmouse.conf
 /lib/udev/rules.d/69-xorg-vmmouse.rules
+%if %{with hal}
+%attr(755,root,root) %{_libdir}/hal/hal-probe-vmmouse
+%{_datadir}/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
+%endif
 %{_mandir}/man1/vmmouse_detect.1*
 %{_mandir}/man4/vmmouse.4*
