@@ -1,12 +1,8 @@
-#
-# Conditional build:
-%bcond_with	hal	# HAL support
-#
 Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
 Version:	13.1.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
@@ -24,7 +20,7 @@ BuildRequires:	xorg-util-util-macros >= 1.8
 BuildRequires:	xorg-xserver-server-devel >= 1.6.0
 %{?requires_xorg_xserver_xinput}
 Requires:	xorg-xserver-server >= 1.6.0
-ExclusiveArch:	%{ix86} %{x8664}
+ExclusiveArch:	%{ix86} %{x8664} x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,10 +55,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/modules/*/*.la
 
-%if %{without hal}
+# obsolete HAL files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/hal/hal-probe-vmmouse \
 	$RPM_BUILD_ROOT%{_datadir}/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -74,9 +69,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/xorg/modules/input/vmmouse_drv.so
 %{_datadir}/X11/xorg.conf.d/50-vmmouse.conf
 /lib/udev/rules.d/69-xorg-vmmouse.rules
-%if %{with hal}
-%attr(755,root,root) %{_libdir}/hal/hal-probe-vmmouse
-%{_datadir}/hal/fdi/policy/20thirdparty/11-x11-vmmouse.fdi
-%endif
 %{_mandir}/man1/vmmouse_detect.1*
 %{_mandir}/man4/vmmouse.4*
