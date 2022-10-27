@@ -1,23 +1,25 @@
 Summary:	VMMouse protocol for VMware virtual machines
 Summary(pl.UTF-8):	Sterownik protokołu VMMouse dla maszyn wirtualnych VMware
 Name:		xorg-driver-input-vmmouse
-Version:	13.1.0
-Release:	4
+Version:	13.2.0
+Release:	1
 License:	MIT
 Group:		X11/Applications
-Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.bz2
-# Source0-md5:	85e2e464b7219c495ad3a16465c226ed
-URL:		http://xorg.freedesktop.org/
+Source0:	https://xorg.freedesktop.org/releases/individual/driver/xf86-input-vmmouse-%{version}.tar.xz
+# Source0-md5:	3b8650d4cd3ecc00c2a00eae666513a9
+URL:		https://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	rpmbuild(macros) >= 1.389
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	udev-devel
 BuildRequires:	xorg-proto-inputproto-devel
 BuildRequires:	xorg-proto-randrproto-devel
 BuildRequires:	xorg-util-util-macros >= 1.8
 BuildRequires:	xorg-xserver-server-devel >= 1.6.0
+BuildRequires:	xz
 %{?requires_xorg_xserver_xinput}
 Requires:	xorg-xserver-server >= 1.6.0
 ExclusiveArch:	%{ix86} %{x8664} x32
